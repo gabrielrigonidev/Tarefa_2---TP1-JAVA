@@ -1,38 +1,52 @@
 package br.edu.fatecpg.tecprog.tarefa2;
-import java.util.Objects;
 import java.util.Scanner;
 public class Ex2 {
    public static void main(String[] args) {
       Scanner ler = new Scanner(System.in);
-      String [][] usuarios = new String [6][2];
-      String [][] usuarioLogado = new String [1][2];
+      String[][] usuarios = new String[6][2];
+      boolean loginValido = false, senhaValida = false;
 
-      for(int l=0; l<=5 ; l++) {
-         for (int c = 0; c <= 1; c++) {
-            if(c == 0) {
-               System.out.println("CRIE um Login: ");
-               usuarios[l][c] = ler.nextLine();
-            } else if (c == 1){
-               System.out.println("CRIE uma Senha: ");
-               usuarios[l][c] = ler.nextLine();
-            }
-
-         }
+      for (int l = 0; l <= 5; l++) {
+         System.out.println("Crie o Login: ");
+         usuarios[l][0] = ler.nextLine();
+         System.out.println("CRIE uma Senha: ");
+         usuarios[l][1] = ler.nextLine();
       }
 
-      System.out.println("ENTRE com um Login e Senha válidos: ");
-      usuarioLogado[0][0] = ler.nextLine();
-      usuarioLogado[0][1] = ler.nextLine();
-
-      for(int l=0; l<=5 ; l++) {
-         for (int c = 0; c <= 1; c++) {
-            if(usuarios[l][c].equals(usuarioLogado[0][0])) {
-                  System.out.println("VALIDADO");
-               } else {
-               System.out.println("INVALIDADO");
-            }
-         }
-      }
+      System.out.print("ENTRE com um Login válido: ");
+      String login = ler.nextLine();
+      System.out.print("ENTRE com uma Senha válida: ");
+      String senha = ler.nextLine();
       ler.close();
+
+      for (int l = 0; l <= 5; l++) {
+         if (usuarios[l][0].equals(login)) {
+            loginValido = true;
+            if (usuarios[l][1].equals(senha)) {
+               senhaValida = true;
+            }
+            break;
+         }
       }
+
+//      for (String[] usuario : usuarios) {
+//         if (usuario[0].equals(login) ) {
+//            loginValido = true;
+//         }
+//         if (usuario[1].equals(senha)) {
+//            senhaValida = true;
+//         }
+//      }
+
+      if (loginValido && senhaValida) {
+         System.out.println("LOGIN E SENHA VALIDADOS!");
+      } else if (!senhaValida) {
+         System.out.println("SENHA INVALIDADA!");
+      } else if (!loginValido){
+         System.out.println("LOGIN INVALIDADO!");
+      }
+      else{
+         System.out.println("LOGIN E SENHA INVALIDADOS!");
+      }
+   }
 }
