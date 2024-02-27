@@ -31,7 +31,3 @@ public class Ex1 {
       }
    }
 }
-
-//Transposição de Matriz:
-//Desenvolva um código que realiza a transposição de uma matriz (as colunas viram linhas e as linhas viram colunas).
-//Peça aos usuários para inserirem os elementos da matriz, exibindo a matriz transposta no console.
